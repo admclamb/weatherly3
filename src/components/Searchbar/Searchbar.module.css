@@ -1,0 +1,31 @@
+.form {
+  position: relative;
+  width: 12rem;
+}
+
+.light {
+  color: var(--text-dark);
+}
+
+.dark {
+  background-color: var(--background-secondary-light);
+  color: var(--text-light);
+}
+
+.input {
+  width: 100%;
+  color: inherit;
+  padding: 0.5rem 0.2rem;
+  border-radius: 50px;
+  filter: brightness(70%);
+  border: none;
+}
+
+.submit {
+  background-color: inherit;
+  border: none;
+  color: var(--text-light);
+  position: absolute;
+  top: 30%;
+  right: 7%;
+}
