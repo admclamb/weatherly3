@@ -1,0 +1,5 @@
+.container {
+  background-color: var(--color-secondary-light);
+  padding: 0.5rem;
+  color: var(--text-light);
+}

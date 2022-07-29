@@ -16,9 +16,11 @@
   /* Colors */
   --color-primary: #eb6e4c;
   --color-secondary: #48484a;
+  --color-secondary-dark: #303031;
   --color-secondary-light: #616163;
   --background-primary: #ffffff;
   --background-secondary: #f2f2f2;
+
   --text-light: #fff;
   --text-dark: #48484a;
 }
@@ -33,7 +35,23 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Roboto Slab', serif;
+  /* font-family: 'Roboto Slab', serif; */
+  font-weight: 400;
+}
+
+.nav-brand {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-brand h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.p-lg {
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 /* container */
@@ -87,4 +105,12 @@ h6 {
   .container {
     max-width: var(--width-xxl);
   }
+}
+
+.padding-sm {
+  padding: 0.4rem 0.5rem;
+}
+
+.padding-md {
+  padding: 0.6rem;
 }

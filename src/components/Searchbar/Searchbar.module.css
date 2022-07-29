@@ -1,6 +1,6 @@
 .form {
   position: relative;
-  width: 12rem;
+  width: 25rem;
 }
 
 .light {
@@ -17,8 +17,19 @@
   color: inherit;
   padding: 0.5rem 0.2rem;
   border-radius: 50px;
-  filter: brightness(70%);
   border: none;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.input:focus {
+  outline: none;
+  border: solid 3px var(--background-primary);
+}
+
+.darkInput {
+  background-color: var(--color-secondary-light);
 }
 
 .submit {
@@ -27,5 +38,10 @@
   color: var(--text-light);
   position: absolute;
   top: 30%;
-  right: 7%;
+  right: 5%;
+}
+
+.submit:active,
+.submit:hover {
+  filter: brightness(80%);
 }
