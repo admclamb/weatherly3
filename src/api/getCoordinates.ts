@@ -3,7 +3,7 @@ export const getCoordinates = (): Promise<any> => {
     navigator.geolocation.getCurrentPosition(
       (resposne) => {
         resolve({
-          lng: resposne.coords.longitude,
+          lon: resposne.coords.longitude,
           lat: resposne.coords.latitude,
         });
       },
