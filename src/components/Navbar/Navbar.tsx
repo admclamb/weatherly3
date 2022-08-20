@@ -5,15 +5,18 @@ const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <div className="container">
-        <div className="left">
+        <div className="container__left">
           <Link to="/" className="nav-brand">
             <h1>Weatherly</h1>
           </Link>
         </div>
-        <div className="middle">
+        <div className="container__middle">
           <Searchbar color="dark" />
         </div>
-        <div className="right"></div>
+        <div className="container__right"></div>
+        <div className="hamburger">
+          <div className="burger"></div>
+        </div>
       </div>
     </nav>
   );

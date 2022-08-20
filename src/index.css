@@ -12,7 +12,8 @@
   --width-lg: 960px;
   --width-xl: 1140px;
   --width-xxl: 1320px;
-
+  --burger-width: 28px;
+  --burger-height: 4px;
   /* Colors */
   --color-primary: #eb6e4c;
   --color-secondary: #48484a;
@@ -27,6 +28,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: var(--background-secondary);
 }
 
 h1,

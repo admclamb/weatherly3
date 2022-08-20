@@ -29,7 +29,7 @@ function App() {
           const coords = await getCoordinates();
           const { lat, lon } = coords;
           const location = await getLocation(lat, lon);
-          setLocation(location);
+          console.log(location);
         } catch (error) {
           setError(error);
         }
