@@ -12,8 +12,8 @@
   --width-lg: 960px;
   --width-xl: 1140px;
   --width-xxl: 1320px;
-  --burger-width: 28px;
-  --burger-height: 4px;
+  --burger-width: 22px;
+  --burger-height: 2px;
   /* Colors */
   --color-primary: #eb6e4c;
   --color-secondary: #48484a;
@@ -115,4 +115,59 @@ h6 {
 
 .padding-md {
   padding: 0.6rem;
+}
+
+/* Base hamburger menu */
+
+.burger-menu {
+  height: 30px;
+  width: var(--burger-width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.burger-menu,
+.burger-menu * {
+  position: relative;
+  cursor: pointer;
+}
+
+.burger {
+  border-radius: 10px;
+  width: var(--burger-width);
+  height: var(--burger-height);
+  background-color: var(--text-light);
+  transition: all 0.25s ease-in-out;
+}
+
+.burger::after,
+.burger::before {
+  content: '';
+  border-radius: 10px;
+  width: var(--burger-width);
+  height: var(--burger-height);
+  background-color: var(--text-light);
+  transition: all 0.25s ease-in-out;
+  position: absolute;
+}
+
+.burger::before {
+  transform: translateY(-8px);
+}
+
+.burger::after {
+  transform: translateY(8px);
+}
+
+.burger-menu.opened .burger {
+  transform: translateX(-12px);
+  background: transparent;
+}
+
+.burger-menu.opened .burger::before {
+  transform: rotate(45deg) translate(8px, -8px);
+}
+.burger-menu.opened .burger::after {
+  transform: rotate(-45deg) translate(8px, 8px);
 }

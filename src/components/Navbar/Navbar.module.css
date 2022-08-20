@@ -1,4 +1,4 @@
-.nav div {
+.nav section {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,41 +8,4 @@
 .nav {
   background-color: var(--color-secondary);
   color: var(--text-light);
-}
-
-.burger,
-.burger::before,
-.burger::after {
-  border-radius: 10px;
-  background-color: var(--color-light);
-  transition: all 0.25s ease-in-out;
-  width: var(--burger-width);
-  height: var(--burger-height);
-}
-
-.burger::before,
-.burger::after {
-  content: '';
-  position: absolute;
-}
-
-.burger::before {
-  transform: translateY(-8px);
-}
-
-.burger::after {
-  transform: translateY(8px);
-}
-
-/* animation for hamburger menu */
-.burger-menu.opened .burger {
-  transform: translateX(-12px);
-  background: transparent;
-}
-
-.burger-menu.opened .burger::before {
-  transform: rotate(45deg) translate(8px, -8px);
-}
-.burger-menu.opened .burger::after {
-  transform: rotate(-45deg) translate(8px, 8px);
 }
