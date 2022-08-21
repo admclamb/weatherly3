@@ -13,7 +13,7 @@ const Card = (props: Props) => {
 };
 
 Card.defaultProps = {
-  padding: 'padding-medium',
+  padding: 'padding-md',
 };
 
 export default Card;

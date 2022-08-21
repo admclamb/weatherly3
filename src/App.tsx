@@ -10,10 +10,15 @@ import { IError } from './ts/interfaces/IError';
 import { getWeather } from './api/getWeather';
 import { getLocation } from './api/getLocation';
 import { getCoordinates } from './api/getCoordinates';
+import { WeatherContext } from './context/WeatherContext';
+import { LocationContext } from './context/LocationContext';
+import { UnitsContext } from './context/UnitsContext';
+import Footer from './components/Footer/Footer';
 function App() {
-  const [weather, setWeather] = useState<IWeather | {}>({});
-  const [location, setLocation] = useState<ILocation>({});
+  const [weather, setWeather] = useState<any>({});
+  const [location, setLocation] = useState<any>({});
   const [coords, setCoords] = useState<ICoords>({ lat: '', lon: '' });
+  const [units, setUnits] = useState<string>('imperial'); // imperial or metric
   const [error, setError] = useState<any>(null);
 
   // Check local storage for datum on component mount
@@ -51,7 +56,8 @@ function App() {
     (async () => {
       try {
         if (coords.lat && coords.lon) {
-          const weather = await getWeather(coords.lat, coords.lon);
+          const weather = await getWeather(coords.lat, coords.lon, units);
+          setWeather(weather.data);
         } else {
           throw { message: 'Location is unavailable' };
         }
@@ -63,12 +69,18 @@ function App() {
 
   return (
     <>
-      <p>{JSON.stringify(weather)}</p>
-      <header>
-        <Navbar />
-        <SubNavbar />
-      </header>
-      <BrowserRoutes />
+      <WeatherContext.Provider value={weather}>
+        <LocationContext.Provider value={location}>
+          <UnitsContext.Provider value={units}>
+            <header>
+              <Navbar />
+              <SubNavbar location={location} weather={weather} />
+            </header>
+            <BrowserRoutes />
+            <Footer />
+          </UnitsContext.Provider>
+        </LocationContext.Provider>
+      </WeatherContext.Provider>
     </>
   );
 }
