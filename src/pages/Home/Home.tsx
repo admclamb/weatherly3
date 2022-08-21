@@ -1,7 +1,9 @@
 const Home = () => {
   return (
     <main>
-      <section></section>
+      <section>
+        <h1>Loo</h1>
+      </section>
       <section></section>
     </main>
   );
