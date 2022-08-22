@@ -16,14 +16,16 @@
   --burger-height: 2px;
   /* Colors */
   --color-primary: #eb6e4c;
+  --color-primary-darker: #be593e;
   --color-secondary: #48484a;
   --color-secondary-dark: #303031;
   --color-secondary-light: #616163;
-  --background-primary: #ffffff;
+  --background-primary: #f8f9fa;
   --background-secondary: #f2f2f2;
 
-  --text-light: #fff;
+  --text-light: #f8f9fa;
   --text-dark: #48484a;
+  --text-gray: #6c757d;
 }
 
 body {
@@ -170,4 +172,14 @@ h6 {
 }
 .burger-menu.opened .burger::after {
   transform: rotate(-45deg) translate(8px, 8px);
+}
+
+/* Colors */
+
+.background-primary {
+  background-color: var(--background-primary);
+}
+
+.text-gray {
+  color: var(--text-gray);
 }

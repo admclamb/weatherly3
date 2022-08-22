@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import HomeWidget from '../../components/widgets/HomeWidget';
+import HomeWidget from '../../components/widgets/HomeWidget/HomeWidget';
 import { WeatherContext } from '../../context/WeatherContext';
 import styles from './Home.module.css';
 const Home = () => {

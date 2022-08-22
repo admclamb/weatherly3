@@ -1,7 +1,7 @@
 import React from 'react';
 import { ILocation } from '../../ts/interfaces/ILocation';
 import { IWeather } from '../../ts/interfaces/IWeather';
-import formatState from '../../utils/formatProperties';
+import { formatState } from '../../utils/formatProperties';
 import styles from './SubNavbar.module.css';
 type Props = {
   location: ILocation;

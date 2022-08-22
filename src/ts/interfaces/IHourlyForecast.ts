@@ -2,6 +2,7 @@ export interface IHourlyForecast {
   clouds: number;
   dew_point: number;
   dt: number;
+  newDt?: string;
   feels_like: number;
   humidity: number;
   pop: number;
