@@ -1,15 +1,13 @@
-import { IWeather } from '../ts/interfaces/IWeather';
-import { ILocation } from '../ts/interfaces/ILocation';
-interface IStorage {
-  getItem(key: string): string | IWeather | ILocation | null;
-  setItem(key: string, value: string | IWeather | ILocation): void;
+interface LocalStorage {
+  getItem(key: string): string | null;
+  setItem(key: string, value: string): void;
   removeItem(key: string): void;
 }
 
 class Storage<T extends string> {
-  private readonly storage: IStorage;
+  private readonly storage: LocalStorage;
 
-  constructor(getSotrage = (): IStorage => window.localStorage) {
+  constructor(getSotrage = (): LocalStorage => window.localStorage) {
     this.storage = getSotrage();
   }
 
@@ -17,7 +15,7 @@ class Storage<T extends string> {
     return this.storage.getItem(key);
   }
 
-  public set(key: T, value: string | IWeather | ILocation): void {
+  public set(key: T, value: string): void {
     this.storage.setItem(key, value);
   }
 

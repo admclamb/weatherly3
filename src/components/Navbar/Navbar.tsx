@@ -1,33 +1,19 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Searchbar from '../Searchbar/Searchbar';
-import styles from './Navbar.module.css';
-const Navbar = () => {
-  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
+import { Box } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Typography from '@mui/material/Typography';
+import React from 'react';
 
+type Props = {};
+
+const Navbar = (props: Props) => {
   return (
-    <nav className={styles.nav}>
-      <section className="container">
-        <div className="container__left">
-          <Link to="/" className="nav-brand">
-            <h1>Weatherly</h1>
-          </Link>
-        </div>
-        <div className="container__middle">
-          <Searchbar color="dark" />
-        </div>
-        <div className="container__right">
-          <div
-            className={`burger-menu ${isBurgerOpen ? 'opened' : ''}`}
-            data-toggle="collapse"
-            data-target="#navContent"
-            onClick={() => setIsBurgerOpen((curr) => !curr)}
-          >
-            <div className="burger"></div>
-          </div>
-        </div>
-      </section>
-    </nav>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Weatherly
+        </Typography>
+      </AppBar>
+    </Box>
   );
 };
 

@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
-import { IError } from '../ts/interfaces/IError';
-import { ILocation } from '../ts/interfaces/ILocation';
+import { Error } from '../ts/interfaces/Error';
+import { Location } from '../ts/interfaces/Location';
 const { REACT_APP_OW_KEY, LIMIT } = process.env;
 export const getLocation = async (lat: number, lon: number) => {
   return axios.get(

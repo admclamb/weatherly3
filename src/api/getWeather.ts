@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { IWeather } from '../ts/interfaces/IWeather';
-
 export const getWeather = async (
   lat: string,
   lon: string,

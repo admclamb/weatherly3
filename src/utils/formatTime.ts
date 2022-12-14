@@ -1,10 +1,8 @@
-import { IHourlyForecast } from '../ts/interfaces/IHourlyForecast';
-
 /*
   takes in hourly weather data and returns the dt (time) property to 
   readable human time ex: { dt: '8:00pm' }
 */
-export function formatHoursFromHourly(hourly: IHourlyForecast[]) {
+export function formatHoursFromHourly(hourly: any[]) {
   return hourly.map((hour) => {
     const newDt = unixToHours(hour.dt);
     hour.newDt = newDt;
