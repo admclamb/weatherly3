@@ -6,9 +6,7 @@ type Props = {};
 const NavbarContent = (props: Props) => {
   return (
     <ul>
-      <li>
-        <Searchbar />
-      </li>
+      <li></li>
     </ul>
   );
 };

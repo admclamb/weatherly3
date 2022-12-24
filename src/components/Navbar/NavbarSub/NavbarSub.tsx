@@ -4,8 +4,10 @@ type Props = {};
 
 const NavbarSub = (props: Props) => {
   return (
-    <nav className="p-2 bg-neutral-700 text-white">
-      <p className="text-sm">Wilmington, NC 78&deg;F</p>
+    <nav className="flex justify-center align-center p-2 bg-neutral-700 text-white">
+      <div className="container">
+        <p className="text-sm">Wilmington, NC 78&deg;F</p>
+      </div>
     </nav>
   );
 };

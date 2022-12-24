@@ -7,7 +7,7 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   return (
-    <nav className=" p-2 bg-neutral-800 text-white">
+    <nav className="flex justify-center align-center p-2 bg-neutral-800 text-white">
       <div className="container flex items-center justify-between">
         <Logo />
         <NavbarBurger />

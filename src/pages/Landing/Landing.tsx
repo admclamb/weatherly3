@@ -4,7 +4,7 @@ import Layout from '../../layout/Layout';
 
 type Props = {};
 
-const Landing = (props: Props) => {
+const Landing = ({}: Props) => {
   return (
     <Layout>
       <Hero />

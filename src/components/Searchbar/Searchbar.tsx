@@ -1,19 +1,56 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getGeocoding } from '../../api/getGeocoding';
+import { LocationContext } from '../../context/LocationContext';
+import { Event } from '../../ts/types/Event';
 import styles from './Searchbar.module.css';
-type Props = {};
+import SearchbarDropdown from './SearchbarDropdown/SearchbarDropdown';
+type Props = {
+  setError: (value: {}) => void;
+};
 
-const Searchbar = (props: Props) => {
+const Searchbar = ({ setError }: Props) => {
+  const [search, setSearch] = useState<string>('');
+  const [isSearchOpen, setIsSearchOpen] = useState<Boolean>(false);
+
+  const { setLocation } = useContext(LocationContext);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    const abortController = new AbortController();
+    event.preventDefault();
+    setError({});
+    const { data = [] } = await getGeocoding(search, abortController.signal);
+    console.log(data);
+    if (Array.isArray(data) && data.length === 1) {
+      setLocation(data);
+      navigate('/');
+    } else {
+      navigate('/search-results', { state: data });
+    }
+  };
+  const onChange = ({ target: { value } }: Event) => setSearch(value);
   return (
-    <form className="relative w-full">
-      <button className={`absolute text-black ${styles.button}`}>
-        <i className="fa-regular fa-magnifying-glass "></i>
-      </button>
-      <input
-        type="search"
-        placeholder=" Search..."
-        className="py-1 px-3 w-full rounded-md border-none"
-      />
-    </form>
+    <div>
+      <form className="relative w-full text-black" onSubmit={handleSubmit}>
+        <button className={`absolute ${styles.button}`} type="submit">
+          <i className="fa-regular fa-magnifying-glass "></i>
+        </button>
+        <input
+          // onBlur={() => setIsSearchOpen(false)}
+          onFocus={() => setIsSearchOpen(true)}
+          type="search"
+          placeholder=" Search..."
+          className={`py-2 pr-9 pl-3 w-full rounded-sm border-none ${
+            styles.input
+          } ${isSearchOpen ? 'rounded-b-none' : ''}`}
+          value={search}
+          onChange={onChange}
+        />
+      </form>
+      {isSearchOpen && <SearchbarDropdown />}
+    </div>
   );
 };
 

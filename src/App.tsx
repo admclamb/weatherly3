@@ -3,11 +3,19 @@ import BrowserRoutes from './pages/Routes';
 import { WeatherContext } from './context/WeatherContext';
 import { LocationContext } from './context/LocationContext';
 import { UnitsContext } from './context/UnitsContext';
+import { GetCoordsContext } from './context/GetCoordsContext';
 import { Coordinates } from './ts/interfaces/Coordinates';
 import { storage } from './utils/Storage';
+import { getCoordinates } from './api/getCoordinates';
+import { Location } from './ts/types/Location';
 const App = () => {
   const [weather, setWeather] = useState<any>({});
-  const [location, setLocation] = useState<any>({});
+  const [location, setLocation] = useState<Location>({
+    name: '',
+    lat: null,
+    lon: null,
+    country: '',
+  });
   const [coords, setCoords] = useState<Coordinates>({ lat: null, lon: null });
   const [units, setUnits] = useState<string>('imperial'); // imperial or metric
   const [error, setError] = useState<any>(null);
@@ -23,14 +31,12 @@ const App = () => {
     }
   }, []);
 
-  // create theme
-
   return (
     <>
       <WeatherContext.Provider value={weather}>
-        <LocationContext.Provider value={location}>
-          <UnitsContext.Provider value={units}>
-            <BrowserRoutes weather={weather} />
+        <LocationContext.Provider value={{ location, setLocation }}>
+          <UnitsContext.Provider value={{ units, setUnits }}>
+            <BrowserRoutes setLocation={setLocation} />
           </UnitsContext.Provider>
         </LocationContext.Provider>
       </WeatherContext.Provider>
