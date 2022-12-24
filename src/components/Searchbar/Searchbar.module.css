@@ -1,0 +1,5 @@
+.button {
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}

@@ -1,19 +1,18 @@
-import { Box } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
 import React from 'react';
-
+import Logo from '../Logo/Brand';
+import Brand from '../Logo/Brand';
+import Searchbar from '../Searchbar/Searchbar';
+import NavbarBurger from './NavbarBurger/NavbarBurger';
 type Props = {};
 
 const Navbar = (props: Props) => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Weatherly
-        </Typography>
-      </AppBar>
-    </Box>
+    <nav className=" p-2 bg-neutral-800 text-white">
+      <div className="container flex items-center justify-between">
+        <Logo />
+        <NavbarBurger />
+      </div>
+    </nav>
   );
 };
 

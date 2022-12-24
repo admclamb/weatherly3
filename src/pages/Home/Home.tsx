@@ -1,12 +1,21 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom';
 import Layout from '../../layout/Layout';
+import { Weather } from '../../ts/types/Weather';
 
-type Props = {};
+type Props = {
+  weather: Weather;
+};
 
-const Home = (props: Props) => {
+const Home = ({ weather }: Props) => {
+  console.log('weather: ', weather);
+  if (!weather || Object.keys(weather).length < 1) {
+    console.log(' no weather!');
+    return <Navigate to="/weather" />;
+  }
   return (
     <Layout>
-      <h1>Boi</h1>
+      <h1>Home</h1>
     </Layout>
   );
 };

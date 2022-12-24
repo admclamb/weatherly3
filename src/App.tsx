@@ -22,12 +22,15 @@ const App = () => {
     } else {
     }
   }, []);
+
+  // create theme
+
   return (
     <>
       <WeatherContext.Provider value={weather}>
         <LocationContext.Provider value={location}>
           <UnitsContext.Provider value={units}>
-            <BrowserRoutes />
+            <BrowserRoutes weather={weather} />
           </UnitsContext.Provider>
         </LocationContext.Provider>
       </WeatherContext.Provider>
