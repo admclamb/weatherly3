@@ -20,14 +20,19 @@ const Searchbar = ({ setError }: Props) => {
   const handleSubmit = async (event: React.FormEvent) => {
     const abortController = new AbortController();
     event.preventDefault();
-    setError({});
-    const { data = [] } = await getGeocoding(search, abortController.signal);
-    console.log(data);
-    if (Array.isArray(data) && data.length === 1) {
-      setLocation(data);
-      navigate('/');
-    } else {
-      navigate('/search-results', { state: data });
+    try {
+      setError({});
+      const { data = [] } = await getGeocoding(search, abortController.signal);
+      console.log(data);
+      if (Array.isArray(data) && data.length === 1) {
+        setLocation(data);
+        navigate('/');
+      } else {
+        navigate('/search-results', { state: { search, results: data } });
+      }
+    } catch (error) {
+      const { message } = error;
+      setError(message);
     }
   };
   const onChange = ({ target: { value } }: Event) => setSearch(value);

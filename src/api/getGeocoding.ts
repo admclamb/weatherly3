@@ -7,6 +7,10 @@ export const getGeocoding = async (location: string, signal) => {
     stateCode = '',
     countryCode = '',
   } = parseLocation(location);
-  const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city},${stateCode},${countryCode}&limit=${LIMIT}&appid=${REACT_APP_OW_KEY}`;
-  return axios.get(url, signal);
+  const url = `https://api.openweathermap.org/geo/1.0/${
+    city && `direct?q=${city}`
+  }${stateCode && `, ${stateCode}`}${
+    countryCode && `, ${countryCode}`
+  }&limit=${LIMIT}&appid=${REACT_APP_OW_KEY}`;
+  return axios.get(url, { signal });
 };
