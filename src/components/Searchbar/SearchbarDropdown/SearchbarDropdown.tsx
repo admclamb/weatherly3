@@ -8,7 +8,8 @@ const SearchbarDropdown = (props: Props) => {
   const getCoords = useContext(GetCoordsContext);
   useEffect(() => {
     // get recent searches from storage
-    const foundSearches = storage.get('recentSearches');
+    const foundSearches = storage.get('searchHistory');
+    console.log('===========================>', foundSearches);
     if (foundSearches) {
       setRecentSearches(JSON.parse(foundSearches));
     }

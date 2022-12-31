@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { WeatherContext } from '../../../context/WeatherContext';
 
 type Props = {};
 
 const NavbarSub = (props: Props) => {
-  return (
-    <nav className="flex justify-center align-center p-2 bg-neutral-700 text-white">
-      <div className="container">
-        <p className="text-sm">Wilmington, NC 78&deg;F</p>
-      </div>
-    </nav>
-  );
+  const weather = useContext(WeatherContext);
+  return;
+  {
+    weather && Object.keys(weather).length > 0 && (
+      <nav className="flex justify-center align-center p-2 bg-neutral-700 text-white">
+        <div className="container">
+          <p className="text-sm">Wilmington, NC 78&deg;F</p>
+        </div>
+      </nav>
+    );
+  }
 };
 
 export default NavbarSub;

@@ -23,7 +23,6 @@ const Searchbar = ({ setError }: Props) => {
     try {
       setError({});
       const { data = [] } = await getGeocoding(search, abortController.signal);
-      console.log(data);
       if (Array.isArray(data) && data.length === 1) {
         setLocation(data);
         navigate('/');

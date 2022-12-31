@@ -1,20 +1,37 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
+import { getWeather } from '../../api/getWeather';
+import { UnitsContext } from '../../context/UnitsContext';
+import { WeatherContext } from '../../context/WeatherContext';
 import Layout from '../../layout/Layout';
 import { Weather } from '../../ts/types/Weather';
 
-type Props = {};
+type Props = {
+  weather: any;
+  setWeather: (value: any) => void;
+};
 
-const Home = () => {
-  const weather = {};
-  console.log('weather: ', weather);
-  if (!weather || Object.keys(weather).length < 1) {
-    console.log(' no weather!');
-    return <Navigate to="/weather" />;
-  }
+const Home = ((): Props) => {
+  const [error, setError] = useState({});
+  const [weather, setWeather] = useState({});
+  const units = useContext(UnitsContext);
+  const { lat = '', lon = '' } = useParams();
+  useEffect(() => {
+    (async () => {
+      if (parseInt(lat) == 0 && parseInt(lon) == 0 || lat && lon ) {
+        const response = await getWeather(+lat, +lon, units);
+        setWeather(response?.data);
+      }
+        
+    })();
+    
+  }, [lat, lon]);
+
+  console.log(weather);
   return (
     <Layout>
       <h1>Home</h1>
+      <p></p>
     </Layout>
   );
 };

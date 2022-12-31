@@ -10,7 +10,7 @@ const SearchResults = ({ setLocation }: Props) => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const { results, search } = state;
-  console.log(results);
+
   const noResultsHeader = (
     <p className="py-2">
       No Results for <strong className="font-bold">{search}</strong>
@@ -27,21 +27,19 @@ const SearchResults = ({ setLocation }: Props) => {
     </p>
   );
 
-  const handleClick = async (event: React.FormEvent<EventTarget>) => {
-    const { index = -1 } = event.currentTarget.dataset;
+  const handleClick = async (event: { target: HTMLInputElement }) => {
+    const { id: index = -1 } = event.target;
     if (index > -1) {
-      await setLocation(results[index]);
       // add to recent storage
-      // storage.append(
-      //   'searchHistory',
-      //   `${results[index].name}${
-      //     results[index]?.state && `, ${results[index].state}`
-      //   } `
-      navigate('/');
+      storage.append(
+        'searchHistory',
+        `${results[index].name}${
+          results[index]?.state && `, ${results[index].state}`
+        } `
       );
-      console.log('history: ', storage.get('searchHistory'));
+      const { lat, lon } = results[index].name;
+      return navigate(`/weather/${lat}/${lon}`);
     }
-    console.log(index);
   };
   return (
     <Layout>
@@ -57,7 +55,7 @@ const SearchResults = ({ setLocation }: Props) => {
                   <button
                     className="text-start w-full block py-3 border-b-[1px] hover:brightness-95 active:brightness-95"
                     onClick={handleClick}
-                    data-index={index}
+                    id={index}
                   >{`${result.name}, ${result.state}`}</button>
                 </li>
               );

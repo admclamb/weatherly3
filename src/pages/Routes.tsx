@@ -5,13 +5,18 @@ import NotFound from './NotFound/NotFound';
 import SearchResults from './SearchResults/SearchResults';
 type Props = {
   setLocation: (value: Location) => void;
+  weather: any;
+  setWeather: (value: any) => void;
 };
-const BrowserRoutes = ({ setLocation }: Props) => {
+const BrowserRoutes = ({ setLocation, weather, setWeather }: Props) => {
   return (
     <>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="/weather" element={<Landing />} />
+        <Route index element={<Landing />} />
+        <Route
+          path="/weather/:lat/:lon"
+          element={<Home weather={weather} setWeather={setWeather} />}
+        />
         <Route
           path="/search-results"
           element={<SearchResults setLocation={setLocation} />}

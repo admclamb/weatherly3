@@ -1,7 +1,7 @@
 import axios from 'axios';
 export const getWeather = async (
-  lat: string,
-  lon: string,
+  lat: number,
+  lon: number,
   units: string
 ): Promise<any> => {
   const { REACT_APP_OW_KEY } = process.env;
