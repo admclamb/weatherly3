@@ -5,33 +5,42 @@ import { UnitsContext } from '../../context/UnitsContext';
 import { WeatherContext } from '../../context/WeatherContext';
 import Layout from '../../layout/Layout';
 import { Weather } from '../../ts/types/Weather';
+import { Location } from '../../ts/types/Location';
+import { getLocation } from '../../api/getLocation';
+import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
+type Props = {};
 
-type Props = {
-  weather: any;
-  setWeather: (value: any) => void;
-};
-
-const Home = ((): Props) => {
+const Home = ({}: Props) => {
   const [error, setError] = useState({});
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState<Weather>({});
+  const [location, setLocation] = useState<Location>({
+    name: '',
+    lat: null,
+    lon: null,
+    country: '',
+  });
   const units = useContext(UnitsContext);
-  const { lat = '', lon = '' } = useParams();
+  const { lat = null, lon = null } = useParams();
   useEffect(() => {
     (async () => {
-      if (parseInt(lat) == 0 && parseInt(lon) == 0 || lat && lon ) {
-        const response = await getWeather(+lat, +lon, units);
-        setWeather(response?.data);
+      try {
+        if (lat !== null && lon !== null) {
+          const weatherResponse = await getWeather(+lat, +lon, units);
+          setWeather(weatherResponse?.data);
+          const locationResponse = await getLocation(+lat, +lon);
+          setLocation(locationResponse?.data);
+        }
+      } catch (error) {
+        setError(error);
       }
-        
     })();
-    
   }, [lat, lon]);
 
   console.log(weather);
+  console.log(location);
   return (
     <Layout>
-      <h1>Home</h1>
-      <p></p>
+      {<CurrentWeather currentWeather={weather?.current} location={location} />}
     </Layout>
   );
 };

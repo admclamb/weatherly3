@@ -13,10 +13,7 @@ const BrowserRoutes = ({ setLocation, weather, setWeather }: Props) => {
     <>
       <Routes>
         <Route index element={<Landing />} />
-        <Route
-          path="/weather/:lat/:lon"
-          element={<Home weather={weather} setWeather={setWeather} />}
-        />
+        <Route path="/weather/lat/:lat/lon/:lon" element={<Home />} />
         <Route
           path="/search-results"
           element={<SearchResults setLocation={setLocation} />}

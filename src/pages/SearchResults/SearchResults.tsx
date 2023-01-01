@@ -37,8 +37,8 @@ const SearchResults = ({ setLocation }: Props) => {
           results[index]?.state && `, ${results[index].state}`
         } `
       );
-      const { lat, lon } = results[index].name;
-      return navigate(`/weather/${lat}/${lon}`);
+      const { lat, lon } = results[index];
+      return navigate(`/weather/lat/${lat}/lon/${lon}`);
     }
   };
   return (
