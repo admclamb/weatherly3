@@ -42,7 +42,7 @@ const App = () => {
     <>
       <WeatherContext.Provider value={weather}>
         <LocationContext.Provider value={{ location, setLocation }}>
-          <UnitsContext.Provider value={{ units, setUnits }}>
+          <UnitsContext.Provider value={units}>
             <BrowserRoutes
               setLocation={setLocation}
               weather={weather}

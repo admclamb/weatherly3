@@ -1,8 +1,9 @@
 import React from 'react';
 import { Location } from '../../ts/types/Location';
 import { WeatherCurrent } from '../../ts/types/WeatherCurrent';
-import { formatTemp } from '../../utils/formatTemp';
+import FormatTemp from '../FormatTemp/FormatTemp';
 import Card from '../Card/Card';
+import Icon from '../Icon/Icon';
 type Props = {
   currentWeather: WeatherCurrent;
   location: Location;
@@ -16,12 +17,25 @@ const CurrentWeather = ({ currentWeather, location }: Props) => {
 
   return (
     <Card>
-      <h4>Current Weather</h4>
+      <h4 className="text-lg font-semibold">Current Weather</h4>
       <div>
         <div>
-          <p>{formatTemp(temp)}</p>
+          <div className="flex items-center">
+            <p className="flex items-center">
+              <FormatTemp
+                temp={temp}
+                fontSize={'text-6xl'}
+                fontWeight={'font-bold'}
+              />
+            </p>
+            <Icon
+              icon={weather[0]?.icon}
+              description={weather[0].description}
+            />
+          </div>
+
           <p>
-            feels like <span>{formatTemp(feels_like)}</span>
+            feels like <FormatTemp temp={feels_like} />
           </p>
         </div>
       </div>

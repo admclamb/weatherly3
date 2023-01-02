@@ -1,3 +1,3 @@
 import { createContext } from 'react';
 
-export const UnitsContext = createContext<string>('imperial');
+export const UnitsContext = createContext<string>(null);

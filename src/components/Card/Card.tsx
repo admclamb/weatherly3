@@ -5,7 +5,7 @@ type Props = {
 };
 
 const Card = ({ children }: Props) => {
-  return <article className="p-1">{children}</article>;
+  return <article className="p-2">{children}</article>;
 };
 
 export default Card;

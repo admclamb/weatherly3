@@ -55,7 +55,7 @@ const SearchResults = ({ setLocation }: Props) => {
                   <button
                     className="text-start w-full block py-3 border-b-[1px] hover:brightness-95 active:brightness-95"
                     onClick={handleClick}
-                    id={index}
+                    id={index + ''}
                   >{`${result.name}, ${result.state}`}</button>
                 </li>
               );

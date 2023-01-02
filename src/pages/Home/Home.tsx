@@ -8,6 +8,8 @@ import { Weather } from '../../ts/types/Weather';
 import { Location } from '../../ts/types/Location';
 import { getLocation } from '../../api/getLocation';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
+import ErrorAlert from '../../errors/ErrorAlert';
+import Card from '../../components/Card/Card';
 type Props = {};
 
 const Home = ({}: Props) => {
@@ -34,12 +36,14 @@ const Home = ({}: Props) => {
         setError(error);
       }
     })();
-  }, [lat, lon]);
+  }, []);
 
   console.log(weather);
   console.log(location);
   return (
     <Layout>
+      <ErrorAlert error={error} padding={'p-2'} />
+
       {<CurrentWeather currentWeather={weather?.current} location={location} />}
     </Layout>
   );
