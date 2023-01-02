@@ -10,6 +10,7 @@ import { getLocation } from '../../api/getLocation';
 import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
 import ErrorAlert from '../../errors/ErrorAlert';
 import Card from '../../components/Card/Card';
+import HourlyWeather from '../../components/HourlyWeather/HourlyWeather';
 type Props = {};
 
 const Home = ({}: Props) => {
@@ -41,10 +42,10 @@ const Home = ({}: Props) => {
   console.log(weather);
   console.log(location);
   return (
-    <Layout>
+    <Layout weather={weather} classes={'p-2 flex flex-col gap-2'}>
       <ErrorAlert error={error} padding={'p-2'} />
-
-      {<CurrentWeather currentWeather={weather?.current} location={location} />}
+      <CurrentWeather currentWeather={weather?.current} location={location} />
+      <HourlyWeather hourlyWeather={weather?.hourly} location={location} />
     </Layout>
   );
 };

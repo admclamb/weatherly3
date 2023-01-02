@@ -13,12 +13,12 @@ export function formatHoursFromHourly(hourly: any[]) {
 /*
  takes in unix time and return in the format hh:mm pm/am
 */
-export function unixToHours(unixTime: number) {
+export function unixToHours(unixTime: number, justHours = false) {
   const date = new Date(unixTime * 1000);
   let hours = date.getHours();
   const minutes = date.getMinutes();
   const amOrPm = hours >= 12 ? 'pm' : 'am';
   hours = amOrPm === 'pm' ? hours % 12 : hours;
   const time = hours + ':' + (minutes < 9 ? '00' : minutes) + amOrPm;
-  return time;
+  return justHours ? hours + amOrPm : time;
 }

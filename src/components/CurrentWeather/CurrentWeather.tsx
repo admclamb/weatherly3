@@ -13,18 +13,24 @@ const CurrentWeather = ({ currentWeather, location }: Props) => {
   if (!currentWeather) {
     return null;
   }
-  const { weather = [], temp, feels_like } = currentWeather;
+  const {
+    weather = [],
+    temp,
+    feels_like,
+    wind_speed,
+    humidity,
+  } = currentWeather;
 
   return (
     <Card>
       <h4 className="text-lg font-semibold">Current Weather</h4>
-      <div>
+      <div className="flex justify-between">
         <div>
           <div className="flex items-center">
             <p className="flex items-center">
               <FormatTemp
                 temp={temp}
-                fontSize={'text-6xl'}
+                fontSize={'text-5xl'}
                 fontWeight={'font-bold'}
               />
             </p>
@@ -37,6 +43,11 @@ const CurrentWeather = ({ currentWeather, location }: Props) => {
           <p>
             feels like <FormatTemp temp={feels_like} />
           </p>
+        </div>
+        <div className="pt-2 flex flex-col items-end">
+          <p className="text-xl font-bold">{weather[0]?.description}</p>
+          {humidity && <p className="text-sm">Humidity: {humidity} %</p>}
+          {wind_speed && <p className="text-sm">Wind Speed: {wind_speed}</p>}
         </div>
       </div>
     </Card>
