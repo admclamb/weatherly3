@@ -18,8 +18,13 @@ const HourlyWeather = ({ hourlyWeather, location }: Props) => {
       const { temp, dt, weather = [] } = hour;
 
       return (
-        <Card classes="flex flex-col items-center" border="" borderRadius="">
-          <p>{unixToHours(dt)}</p>
+        <Card
+          classes="flex flex-col items-center"
+          border=""
+          borderRadius=""
+          key={dt}
+        >
+          <p>{unixToHours(dt, false)}</p>
           <Icon icon={weather[0]?.icon} description={weather[0].description} />
           <p>
             <FormatTemp temp={temp} />
@@ -30,7 +35,10 @@ const HourlyWeather = ({ hourlyWeather, location }: Props) => {
   return (
     hourlyWeatherArr &&
     hourlyWeatherArr.length > 0 && (
-      <Card classes="flex overflow-hidden">{hourlyWeatherArr}</Card>
+      <Card classes="flex flex-col items-start">
+        <h4 className="text-lg font-semibold">Hourly</h4>
+        <div className="flex overflow-hidden w-full">{hourlyWeatherArr}</div>
+      </Card>
     )
   );
 };

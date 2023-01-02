@@ -11,6 +11,7 @@ import CurrentWeather from '../../components/CurrentWeather/CurrentWeather';
 import ErrorAlert from '../../errors/ErrorAlert';
 import Card from '../../components/Card/Card';
 import HourlyWeather from '../../components/HourlyWeather/HourlyWeather';
+import DailyWeather from '../../components/DailyWeather/DailyWeather';
 type Props = {};
 
 const Home = ({}: Props) => {
@@ -46,6 +47,7 @@ const Home = ({}: Props) => {
       <ErrorAlert error={error} padding={'p-2'} />
       <CurrentWeather currentWeather={weather?.current} location={location} />
       <HourlyWeather hourlyWeather={weather?.hourly} location={location} />
+      <DailyWeather dailyWeather={weather?.daily} location={location} />
     </Layout>
   );
 };

@@ -22,3 +22,25 @@ export function unixToHours(unixTime: number, justHours = false) {
   const time = hours + ':' + (minutes < 9 ? '00' : minutes) + amOrPm;
   return justHours ? hours + amOrPm : time;
 }
+
+/*
+ takes in unix time and return in the format day
+*/
+export function unixToDay(
+  unixTime: number,
+  shorten: boolean = false,
+  isLowerCase: boolean = false
+) {
+  const days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+  let day = days[new Date(unixTime * 1000).getDay()];
+  day = shorten ? day.substring(0, 3) : day;
+  return isLowerCase ? day.toLowerCase() : day;
+}

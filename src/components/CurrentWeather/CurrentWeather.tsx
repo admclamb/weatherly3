@@ -20,10 +20,16 @@ const CurrentWeather = ({ currentWeather, location }: Props) => {
     wind_speed,
     humidity,
   } = currentWeather;
-
+  const { name, state } = location;
+  console.log('===============>', location);
   return (
     <Card>
       <h4 className="text-lg font-semibold">Current Weather</h4>
+      {location && location?.name && location?.state && (
+        <p>
+          {name}, {state}
+        </p>
+      )}
       <div className="flex justify-between">
         <div>
           <div className="flex items-center">
@@ -46,8 +52,8 @@ const CurrentWeather = ({ currentWeather, location }: Props) => {
         </div>
         <div className="pt-2 flex flex-col items-end">
           <p className="text-xl font-bold">{weather[0]?.description}</p>
-          {humidity && <p className="text-sm">Humidity: {humidity} %</p>}
-          {wind_speed && <p className="text-sm">Wind Speed: {wind_speed}</p>}
+          {humidity && <p className="text-sm">Humidity: {humidity}%</p>}
+          {wind_speed && <p className="text-sm">Wind Speed: {wind_speed}MPH</p>}
         </div>
       </div>
     </Card>
