@@ -6,6 +6,7 @@ type Props = {
   fontWeight: string;
   degreeSize: string;
   degreeWeight: string;
+  classes: string;
 };
 
 const FormatTemp = ({
@@ -14,9 +15,10 @@ const FormatTemp = ({
   fontWeight,
   degreeSize,
   degreeWeight,
+  classes,
 }: Props) => {
   return (
-    <span className={`${fontSize} ${fontWeight}`}>
+    <span className={`${fontSize} ${fontWeight} ${classes}`}>
       {temp.toFixed(0)}
       <span
         className={`${degreeSize ? degreeSize : fontSize} ${
@@ -34,6 +36,7 @@ FormatTemp.defaultProps = {
   fontWeight: '',
   degreeSize: '',
   degreeWeight: '',
+  classes: '',
 };
 
 export default FormatTemp;

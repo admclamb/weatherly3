@@ -24,7 +24,7 @@ const HourlyWeather = ({ hourlyWeather, location }: Props) => {
           borderRadius=""
           key={dt}
         >
-          <p>{unixToHours(dt, false)}</p>
+          <p>{unixToHours(dt, true)}</p>
           <Icon icon={weather[0]?.icon} description={weather[0].description} />
           <p>
             <FormatTemp temp={temp} />

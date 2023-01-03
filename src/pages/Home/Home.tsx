@@ -12,6 +12,7 @@ import ErrorAlert from '../../errors/ErrorAlert';
 import Card from '../../components/Card/Card';
 import HourlyWeather from '../../components/HourlyWeather/HourlyWeather';
 import DailyWeather from '../../components/DailyWeather/DailyWeather';
+import AirQuality from '../../components/AirQuality/AirQuality';
 type Props = {};
 
 const Home = ({}: Props) => {
@@ -48,6 +49,7 @@ const Home = ({}: Props) => {
       <CurrentWeather currentWeather={weather?.current} location={location} />
       <HourlyWeather hourlyWeather={weather?.hourly} location={location} />
       <DailyWeather dailyWeather={weather?.daily} location={location} />
+      <AirQuality />
     </Layout>
   );
 };

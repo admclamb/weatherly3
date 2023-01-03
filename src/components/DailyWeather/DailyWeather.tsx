@@ -29,7 +29,7 @@ const DailyWeather = ({ dailyWeather, location }: Props) => {
           <p>{unixToDay(dt, true)}</p>
           <Icon icon={weather[0]?.icon} description={weather[0].description} />
           <p className="text-sm">
-            <FormatTemp temp={max} fontWeight="font-bold" />
+            <FormatTemp temp={max} fontWeight="font-bold" classes="mr-1" />
             <FormatTemp temp={min} />
           </p>
         </Card>
