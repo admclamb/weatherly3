@@ -6,7 +6,6 @@ type Props = {
 };
 
 const ErrorAlert = ({ message, padding }: Props) => {
-  console.log(message);
   return (
     message && (
       <div className={padding}>

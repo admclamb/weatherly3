@@ -21,7 +21,7 @@ const DailyWeather = ({ dailyWeather, location }: Props) => {
 
       return (
         <Card
-          classes="flex flex-col items-center"
+          classes="flex flex-col items-center min-w-[4rem]"
           border=""
           borderRadius=""
           key={dt}
@@ -39,8 +39,8 @@ const DailyWeather = ({ dailyWeather, location }: Props) => {
     dailyWeatherArr &&
     dailyWeatherArr.length > 0 && (
       <Card classes="flex flex-col items-start">
-        <h4 className="text-lg font-bold">Daily</h4>
-        <div className="flex overflow-hidden w-full">{dailyWeatherArr}</div>
+        <h4 className="text-lg font-semibold">Daily</h4>
+        <div className="flex overflow-x-scroll w-full">{dailyWeatherArr}</div>
       </Card>
     )
   );

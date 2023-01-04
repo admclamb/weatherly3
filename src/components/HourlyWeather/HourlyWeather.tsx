@@ -19,7 +19,7 @@ const HourlyWeather = ({ hourlyWeather, location }: Props) => {
 
       return (
         <Card
-          classes="flex flex-col items-center"
+          classes="flex flex-col items-center min-w-[4rem]"
           border=""
           borderRadius=""
           key={dt}
@@ -37,7 +37,9 @@ const HourlyWeather = ({ hourlyWeather, location }: Props) => {
     hourlyWeatherArr.length > 0 && (
       <Card classes="flex flex-col items-start">
         <h4 className="text-lg font-semibold">Hourly</h4>
-        <div className="flex overflow-hidden w-full">{hourlyWeatherArr}</div>
+        <div className="flex overflow-x-scroll scroll-smooth w-full">
+          {hourlyWeatherArr}
+        </div>
       </Card>
     )
   );

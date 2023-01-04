@@ -1,18 +1,28 @@
-import React, { useContext } from 'react';
-import { WeatherContext } from '../../../context/WeatherContext';
+import React from 'react';
+import { Location } from '../../../ts/types/Location';
 import { Weather } from '../../../ts/types/Weather';
+import { stateAbbreviation } from '../../../utils/formatLocation';
+import FormatTemp from '../../FormatTemp/FormatTemp';
 
 type Props = {
   weather: Weather;
+  location: Location;
 };
 
-const NavbarSub = ({ weather }: Props) => {
+const NavbarSub = ({ weather, location }: Props) => {
+  console.log(weather);
+  console.log(location);
   return (
-    weather &&
-    Object.keys(weather).length > 0 && (
+    weather?.current?.temp &&
+    Array.isArray(location) &&
+    location[0]?.name &&
+    location[0]?.state && (
       <nav className="flex justify-center align-center p-2 bg-neutral-700 text-white">
         <div className="container">
-          <p className="text-sm">Wilmington, NC 78&deg;F</p>
+          <p className="text-sm">
+            {`${location[0]?.name}, ${stateAbbreviation(location[0]?.state)}`}{' '}
+            <FormatTemp temp={weather?.current?.temp} />
+          </p>
         </div>
       </nav>
     )

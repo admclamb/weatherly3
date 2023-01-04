@@ -36,8 +36,6 @@ const App = () => {
 
   useEffect(() => {}, [location]);
 
-  console.log(location);
-
   return (
     <>
       <WeatherContext.Provider value={weather}>

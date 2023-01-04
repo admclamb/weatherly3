@@ -16,6 +16,7 @@ export function formatHoursFromHourly(hourly: any[]) {
 export function unixToHours(unixTime: number, justHours = false) {
   const date = new Date(unixTime * 1000);
   let hours = date.getHours();
+  hours = hours === 0 ? 12 : hours;
   const minutes = date.getMinutes();
   const amOrPm = hours >= 12 ? 'pm' : 'am';
   hours = amOrPm === 'pm' ? hours % 12 : hours;

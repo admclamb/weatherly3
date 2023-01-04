@@ -21,7 +21,6 @@ const CurrentWeather = ({ currentWeather, location }: Props) => {
     humidity,
   } = currentWeather;
   const { name, state } = location;
-  console.log('===============>', location);
   return (
     <Card>
       <h4 className="text-lg font-semibold">Current Weather</h4>
