@@ -52,7 +52,7 @@ const Home = ({}: Props) => {
       <CurrentWeather currentWeather={weather?.current} location={location} />
       <HourlyWeather hourlyWeather={weather?.hourly} location={location} />
       <DailyWeather dailyWeather={weather?.daily} location={location} />
-      <AirQuality />
+      <AirQuality location={location} />
     </Layout>
   );
 };
