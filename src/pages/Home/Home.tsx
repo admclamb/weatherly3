@@ -14,6 +14,7 @@ import HourlyWeather from '../../components/HourlyWeather/HourlyWeather';
 import DailyWeather from '../../components/DailyWeather/DailyWeather';
 import AirQuality from '../../components/AirQuality/AirQuality';
 import Loading from '../../components/Loading/Loading';
+import NavbarPage from '../../components/Navbar/NavbarPage/NavbarPage';
 type Props = {};
 
 const Home = ({}: Props) => {
@@ -46,8 +47,9 @@ const Home = ({}: Props) => {
     <Layout
       weather={weather}
       location={location}
-      classes={'p-2 flex flex-col gap-2'}
+      classes={'p-2 flex flex-col gap-3 min-h-screen'}
     >
+      <NavbarPage active="home" />
       <ErrorAlert error={error} padding={'p-2'} />
       <CurrentWeather currentWeather={weather?.current} location={location} />
       <HourlyWeather hourlyWeather={weather?.hourly} location={location} />

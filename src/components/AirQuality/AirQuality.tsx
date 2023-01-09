@@ -31,6 +31,7 @@ const AirQuality = ({ location }: Props) => {
   };
 
   return (
+    airPollution &&
     Object.keys(airPollution).length > 0 && (
       <Card classes="flex flex-col">
         <h4 className="text-lg font-semibold text-left">Air Quality</h4>

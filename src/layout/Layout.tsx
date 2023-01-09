@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer/Footer';
 import Navbar from '../components/Navbar/Navbar';
+import NavbarPage from '../components/Navbar/NavbarPage/NavbarPage';
 import NavbarSub from '../components/Navbar/NavbarSub/NavbarSub';
 import { Location } from '../ts/types/Location';
 import { Weather } from '../ts/types/Weather';
